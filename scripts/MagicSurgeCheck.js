@@ -171,7 +171,7 @@ if (updateJournal <= 3){
     else if (updateJournal <= 6) {
         this.chat.SendChat("<p>The sounds of clicking and buzzing fills the air.</p>");
     }
-    else (updateJournal <= 20) {
+    else if (updateJournal <= 20) {
         this.chat.SendChat("<p>The screech of the Dungeon Dimensions is is palpable.</p>");
     }
       
