@@ -138,7 +138,7 @@ export default class MagicSurgeCheck {
                  let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
-                    updateJournal = `<p>${num + 1}</p>`;
+                    updateJournal = `<p>${0}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
@@ -159,7 +159,7 @@ export default class MagicSurgeCheck {
                  let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
-                    updateJournal = `<p>${0}</p>`;
+                  updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
       
