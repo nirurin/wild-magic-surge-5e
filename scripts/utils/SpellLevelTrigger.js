@@ -12,14 +12,15 @@ import {
   OPT_TSL_LVL10,
 } from "../Settings.js";
 
-let getJournal = game.journal.getName("SpellCount");
-let updateJournal = duplicate(getJournal.data.content);
-let num = Number(updateJournal.match(/\d+/)[0]);
+
 
 export default class SpellLevelTrigger {
   constructor() {}
 
   Check(result, spellLevel) {
+    let getJournal = game.journal.getName("SpellCount");
+let updateJournal = duplicate(getJournal.data.content);
+let num = Number(updateJournal.match(/\d+/)[0]);
     let spellString;
     switch (spellLevel) {
       case "1st Level":
