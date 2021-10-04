@@ -136,6 +136,14 @@ export default class MagicSurgeCheck {
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: true,
         result: result,
+        
+                 /** Nirin Update journal*/
+                 let getJournal = game.journal.getName("SpellCount");
+                  let updateJournal = duplicate(getJournal.data.content);
+                  let num = Number(updateJournal.match(/\d+/)[0]);
+                    updateJournal = `<p>${num + 1}</p>`;
+                  await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
+        
       });
     } else {
       this.chat.SendChat(
@@ -148,6 +156,14 @@ export default class MagicSurgeCheck {
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: false,
         result: result,
+        
+        /** Nirin Update journal*/
+                 let getJournal = game.journal.getName("SpellCount");
+                  let updateJournal = duplicate(getJournal.data.content);
+                  let num = Number(updateJournal.match(/\d+/)[0]);
+                    updateJournal = `<p>${0}</p>`;
+                  await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
+        
       });
     }
   }
