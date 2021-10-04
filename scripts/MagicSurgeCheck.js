@@ -138,7 +138,7 @@ export default class MagicSurgeCheck {
                   let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
-                    updateJournal = `<p>${0}</p>`;
+                    updateJournal = `<p>${1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
                   await ChatMessage.create({
                              content: `<p>The susurration subsides.</p>`
