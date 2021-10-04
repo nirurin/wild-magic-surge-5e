@@ -135,11 +135,14 @@ export default class MagicSurgeCheck {
       this.rollTableMagicSurge.Check();
       
        /** Nirin Update journal*/
-                 let getJournal = game.journal.getName("SpellCount");
+                  let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
                     updateJournal = `<p>${0}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
+                  await ChatMessage.create({
+                             content: `<p>The susurration subsides.</p>`
+                  });
       
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: true,
@@ -156,11 +159,26 @@ export default class MagicSurgeCheck {
       );
       
               /** Nirin Update journal*/
-                 let getJournal = game.journal.getName("SpellCount");
+                  let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
+      
+                  switch (updatejournal) {
+                  case (updateJournal < 4):
+                           await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
+                  case (updateJournal < 8):
+                           await ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
+                  case (updateJournal < 20):
+                           await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensionsis is palpable.</p>`});
+                  default:
+                           return false;
+                  }
+      
+      
+      
+      
       
       
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
