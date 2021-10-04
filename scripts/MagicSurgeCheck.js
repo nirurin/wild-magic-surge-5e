@@ -123,7 +123,7 @@ export default class MagicSurgeCheck {
         break;
     }
 
-    if (isSurge) {
+   if (isSurge) {
       this.chat.SendChat(
         game.settings.get(`${MODULE_ID}`, `${OPT_AUTO_D20_MSG}`),
         `[[/r ${result} #${game.settings.get(
@@ -140,31 +140,62 @@ export default class MagicSurgeCheck {
                   let num = Number(updateJournal.match(/\d+/)[0]);
                     updateJournal = `<p>${0}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
-        
+                  await ChatMessage.create({
+                             content: `<p>The susurration subsides.</p>`
+                  });
       
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: true,
         result: result,        
       });
     } else {
-      
       this.chat.SendChat(
         game.settings.get(`${MODULE_ID}`, `${OPT_AUTO_D20_MSG_NO_SURGE}`),
         `[[/r ${result} #${game.settings.get(
           `${MODULE_ID}`,
           `${OPT_CUSTOM_ROLL_DICE_FORMULA}`
-        )} result]]`       
+        )} result]]`
+                
       );
-      } 
-    
-                        /** Nirin Update journal*/
+      
+              /** Nirin Update journal*/
                   let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
                   let num = Number(updateJournal.match(/\d+/)[0]);
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
-    
-    
+      
+         /**   
+                  if (updateJournal <= 3){
+                       ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
+                  }
+                    else if (updateJournal <= 6) {
+                       ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
+                  }
+                    else (updateJournal <= 20) {
+                       ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
+                  }
+                 
+      
+                  switch (true) {
+                  case updateJournal < 4:
+                           await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
+                           break;  
+                  case updateJournal < 8:
+                           await ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
+                           break;
+                  case updateJournal < 20:
+                           await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
+                           break;
+                  default:
+                           return false;
+                  }
+      
+      */
+      
+      
+      
+      
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: false,
         result: result,
