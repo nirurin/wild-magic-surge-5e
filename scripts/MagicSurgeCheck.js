@@ -165,13 +165,16 @@ export default class MagicSurgeCheck {
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
-                  switch (updatejournal) {
-                  case (updateJournal < 4):
+                  switch (true) {
+                  case updateJournal < 4:
                            await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
-                  case (updateJournal < 8):
+                           break;  
+                  case updateJournal < 8:
                            await ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
-                  case (updateJournal < 20):
-                           await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensionsis is palpable.</p>`});
+                           break;
+                  case updateJournal < 20:
+                           await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
+                           break;
                   default:
                            return false;
                   }
