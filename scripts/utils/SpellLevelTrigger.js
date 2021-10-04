@@ -19,8 +19,9 @@ export default class SpellLevelTrigger {
 
   Check(result, spellLevel) {
     let getJournal = game.journal.getName("SpellCount");
-let updateJournal = duplicate(getJournal.data.content);
-let num = Number(updateJournal.match(/\d+/)[0]);
+    let updateJournal = duplicate(getJournal.data.content);
+    let num = Number(updateJournal.match(/\d+/)[0]);
+    
     let spellString;
     switch (spellLevel) {
       case "1st Level":
@@ -55,7 +56,7 @@ let num = Number(updateJournal.match(/\d+/)[0]);
         break;
     }
 
-    const splitLevel = this.parseTSLOption(spellString) + num;
+    var splitLevel = this.parseTSLOption(spellString+num);
 
     const rollResultTarget = parseInt(splitLevel[1]);
     switch (splitLevel[0]) {
