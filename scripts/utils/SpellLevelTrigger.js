@@ -56,9 +56,11 @@ export default class SpellLevelTrigger {
         break;
     }
 
-    const splitLevel = this.parseTSLOption(spellString+num);
+    const splitLevel = this.parseTSLOption(spellString);
 
-    const rollResultTarget = parseInt(splitLevel[1]);
+    var rollResultTarget = parseInt(splitLevel[1]);
+    var rollResultTarget = rollResultTarget + num;
+    
     switch (splitLevel[0]) {
       case "=":
         return result === rollResultTarget;
