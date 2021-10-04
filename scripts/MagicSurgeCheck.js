@@ -165,14 +165,14 @@ export default class MagicSurgeCheck {
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
-  if (updateJournal <= 3){
-        this.chat.SendChat(<p>You hear a faint susurration.</p>);
+if (updateJournal <= 3){
+        this.chat.SendChat("<p>You hear a faint susurration.</p>");
     }
     else if (updateJournal <= 6) {
-        this.chat.SendChat(<p>The sounds of clicking and buzzing fills the air.</p>);
+        this.chat.SendChat("<p>The sounds of clicking and buzzing fills the air.</p>");
     }
     else (updateJournal <= 20) {
-        this.chat.SendChat(<p>The screech of the Dungeon Dimensions is is palpable.</p>);
+        this.chat.SendChat("<p>The screech of the Dungeon Dimensions is is palpable.</p>");
     }
       
       
