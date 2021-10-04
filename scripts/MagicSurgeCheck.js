@@ -161,17 +161,17 @@ export default class MagicSurgeCheck {
               /** Nirin Update journal*/
                   let getJournal = game.journal.getName("SpellCount");
                   let updateJournal = duplicate(getJournal.data.content);
-                  let num = Number(updateJournal.match(/\d+/)[0]);
-                  updateJournal = `<p>${num + 1}</p>`;
+                  let num = Number(updateJournal.match(/\d+/)[0]) +1;
+                  updateJournal = `<p>${num}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
-if (updateJournal <= 3){
+if (num <= 3){
         this.chat.SendChat("<p>You hear a faint susurration.</p>");
     }
-    else if (updateJournal <= 6) {
+    else if (num <= 6) {
         this.chat.SendChat("<p>The sounds of clicking and buzzing fills the air.</p>");
     }
-    else if (updateJournal <= 20) {
+    else if (num <= 20) {
         this.chat.SendChat("<p>The screech of the Dungeon Dimensions is is palpable.</p>");
     }
       
