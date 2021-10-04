@@ -24,7 +24,7 @@ let num = Number(updateJournal.match(/\d+/)[0]);
     let spellString;
     switch (spellLevel) {
       case "1st Level":
-        spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL1}`+ num);
+        spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL1}`);
         break;
       case "2nd Level":
         spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL2}`);
@@ -55,7 +55,7 @@ let num = Number(updateJournal.match(/\d+/)[0]);
         break;
     }
 
-    const splitLevel = this.parseTSLOption(spellString);
+    const splitLevel = this.parseTSLOption(spellString) + num;
 
     const rollResultTarget = parseInt(splitLevel[1]);
     switch (splitLevel[0]) {
