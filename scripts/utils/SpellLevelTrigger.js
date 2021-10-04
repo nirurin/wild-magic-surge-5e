@@ -12,6 +12,10 @@ import {
   OPT_TSL_LVL10,
 } from "../Settings.js";
 
+let getJournal = game.journal.getName("SpellCount");
+let updateJournal = duplicate(getJournal.data.content);
+let num = Number(updateJournal.match(/\d+/)[0]);
+
 export default class SpellLevelTrigger {
   constructor() {}
 
@@ -19,7 +23,7 @@ export default class SpellLevelTrigger {
     let spellString;
     switch (spellLevel) {
       case "1st Level":
-        spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL1}`);
+        spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL1}`+ num);
         break;
       case "2nd Level":
         spellString = game.settings.get(`${MODULE_ID}`, `${OPT_TSL_LVL2}`);
