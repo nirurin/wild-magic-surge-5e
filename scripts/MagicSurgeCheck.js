@@ -148,23 +148,23 @@ export default class MagicSurgeCheck {
       });
     } else {
       
-                    /** Nirin Update journal*/
-                  let getJournal = game.journal.getName("SpellCount");
-                  let updateJournal = duplicate(getJournal.data.content);
-                  let num = Number(updateJournal.match(/\d+/)[0]);
-                  updateJournal = `<p>${num + 1}</p>`;
-                  await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
-      
-
       this.chat.SendChat(
         game.settings.get(`${MODULE_ID}`, `${OPT_AUTO_D20_MSG_NO_SURGE}`),
         `[[/r ${result} #${game.settings.get(
           `${MODULE_ID}`,
           `${OPT_CUSTOM_ROLL_DICE_FORMULA}`
-        )} result]]`
-                
+        )} result]]`       
       );
       } 
+    
+                        /** Nirin Update journal*/
+                  let getJournal = game.journal.getName("SpellCount");
+                  let updateJournal = duplicate(getJournal.data.content);
+                  let num = Number(updateJournal.match(/\d+/)[0]);
+                  updateJournal = `<p>${num + 1}</p>`;
+                  await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
+    
+    
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: false,
         result: result,
