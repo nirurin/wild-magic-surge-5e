@@ -165,6 +165,19 @@ export default class MagicSurgeCheck {
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
+      
+                  if (updateJournal <= 3){
+                      await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
+                  }
+                    else if (updateJournal <= 6) {
+                      await ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
+                  }
+                    else (updateJournal <= 20) {
+                      await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
+                  }
+                 
+      
+      /**
                   switch (true) {
                   case updateJournal < 4:
                            await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
@@ -179,7 +192,7 @@ export default class MagicSurgeCheck {
                            return false;
                   }
       
-      
+      */
       
       
       
