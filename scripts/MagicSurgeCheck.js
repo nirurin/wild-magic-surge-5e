@@ -167,13 +167,13 @@ export default class MagicSurgeCheck {
       
       
                   if (updateJournal <= 3){
-                      await ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
+                       ChatMessage.create({content: `<p>You hear a faint susurration.</p>`});
                   }
                     else if (updateJournal <= 6) {
-                      await ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
+                       ChatMessage.create({content: `<p>The sounds of clicking and buzzing fills the air.</p>`});
                   }
                     else (updateJournal <= 20) {
-                      await ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
+                       ChatMessage.create({content: `<p>The screech of the Dungeon Dimensions is is palpable.</p>`});
                   }
                  
       
