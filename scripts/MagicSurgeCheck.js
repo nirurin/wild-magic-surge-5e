@@ -155,7 +155,7 @@ export default class MagicSurgeCheck {
                   updateJournal = `<p>${num + 1}</p>`;
                   await getJournal.update({_id: getJournal.data._id, "content" : updateJournal});
       
-      if (updateJournal < 5) {
+
       this.chat.SendChat(
         game.settings.get(`${MODULE_ID}`, `${OPT_AUTO_D20_MSG_NO_SURGE}`),
         `[[/r ${result} #${game.settings.get(
@@ -164,15 +164,7 @@ export default class MagicSurgeCheck {
         )} result]]`
                 
       );
-      } else {
-        this.chat.SendChat(
-        game.settings.get(`${MODULE_ID}`, `${OPT_AUTO_D20_MSG}`),
-        `[[/r ${result} #${game.settings.get(
-          `${MODULE_ID}`,
-          `${OPT_CUSTOM_ROLL_DICE_FORMULA}`
-        )} result]]`
-      };
-      
+      } 
       Hooks.callAll("wild-magic-surge-5e.IsWildMagicSurge", {
         surge: false,
         result: result,
